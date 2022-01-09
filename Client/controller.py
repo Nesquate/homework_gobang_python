@@ -50,26 +50,38 @@ class Controller:
             return "SUCCESS"
 
         except socket.error as socketError:
-            print('Occurred Socket error! Information:')
-            print(socketError)
-
+            # print('Occurred Socket error! Information:')
+            # print(socketError)
             return "FAIL"
+
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
 
             return "EXCEPTION"
-
     #Menu
     def logout(self) -> str:
-        self.__send("LOGOUT")
-        recv_msg = self.__recv()
+        try:
+            self.__send("LOGOUT")
+            recv_msg = self.__recv()
 
-        if recv_msg == "OK":
-            print("DEBUG : Socket Closed.")
-            self.__socket.close()
-            return "SUCCESS"
-        return "FAIL"
+            if recv_msg == "OK":
+                print("DEBUG : Socket Closed.")
+                self.__socket.close()
+                return "SUCCESS"
+            return "FAIL"
+        
+        except socket.error as socketError:
+            print('Occurred Socket error! Information:')
+            print(socketError)
+            print("Force stop...")
+            exit(2)
+
+        except Exception as otherError:
+            print('Occurred other error! Information:')
+            print(otherError)
+            print("Force stop...")
+            exit(2)
 
     #Lobby
     def getLobby(self):
@@ -88,13 +100,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def create(self, size: int, winCondi: int) -> str:
         try:
@@ -111,13 +124,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
         
     def joinRoom(self, id: str):
         try:
@@ -137,13 +151,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
 
     #Room
@@ -163,13 +178,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def ready(self) -> str:
         try:
@@ -183,13 +199,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def start(self) -> str:
         try:
@@ -209,13 +226,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def leave(self) -> str:
         try:
@@ -231,13 +249,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     #Gamming
     def getSize(self) -> int:
@@ -259,13 +278,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def getWho(self) -> str:
         try:
@@ -286,13 +306,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def setPos(self, x: int, y: int) -> str:
         try:
@@ -311,13 +332,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
             
 
     def getWinner(self) -> str:
@@ -333,13 +355,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
 
     def gameOver(self) -> str:
         try:
@@ -354,13 +377,14 @@ class Controller:
         except socket.error as socketError:
             print('Occurred Socket error! Information:')
             print(socketError)
+            print("Force stop...")
+            exit(2)
 
-            return "FAIL"
         except Exception as otherError:
             print('Occurred other error! Information:')
             print(otherError)
-
-            return "EXCEPTION"
+            print("Force stop...")
+            exit(2)
     
     def getLocalTurn(self):
         return self.__game.getTurn()

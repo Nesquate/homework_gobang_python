@@ -22,10 +22,13 @@ class UI:
                 name = str(input("Enter your name: "))
                 addr = str(input("Enter server address: "))
                 port = int(input("Enter server port: "))
-            except:
+            except ValueError:
                 print("You type wrong data, try again!")
                 self.__enter()
                 continue
+            except KeyboardInterrupt:
+                print("Exit.")
+                exit(3)
             
             result = self.__controller.login(addr, port, name)
             
@@ -158,9 +161,12 @@ class UI:
                 size = int(input("Input board size: "))
                 winCondi = int(input("Input win condition: "))
                 break
-            except:
+            except ValueError:
                 print("You data has wrong, try again!")
                 self.__enter()
+            except KeyboardInterrupt:
+                print("Exit.")
+                exit(3)
 
         result = self.__controller.create(size, winCondi)
 
@@ -370,7 +376,7 @@ class UI:
                 else:
                     return "CONTINUE"
 
-            except:
+            except ValueError:
                 print("Enter data error! Try again.")
                 continue
 
