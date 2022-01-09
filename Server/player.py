@@ -290,10 +290,8 @@ class Player(threading.Thread):
         
     def __forceStop(self):
         try:
-            # 如果沒有房間，那就直接斷線就好了
-            if self.room == None:
-                self.__socket.close()
-            else: # 有房間的話，要考慮是否在房間內、是否已經開始
+            if self.room != None:
+                # 有房間的話，要考慮是否在房間內、是否已經開始
                 playerList = self.room.getPlayerList()
 
                 if self.__name in playerList.keys():
@@ -316,6 +314,7 @@ class Player(threading.Thread):
                 # 最後就是移除自身參照
                 self.globallobby.removePlayer(self.__name)
                 self.room = None
+                self.__socket.close()
         except Exception as otherError:
             print("Occurred error while force stop thread!")
             print("Details: ")
