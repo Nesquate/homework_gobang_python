@@ -234,7 +234,7 @@ class Room:
             copy_x = x + 1
             copy_y = y
 
-            while copy_y < self.__size:
+            while copy_x < self.__size:
                 if self.__board[copy_y][copy_x] == str(self.__nowTurn):
                     count += 1
                     copy_x += 1
